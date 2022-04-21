@@ -17,4 +17,36 @@ test "Luisa" {
 	luisa.jugadorActivo().encontrar(castillo)
 	
 	assert.equals(45, mario.valorRecolectado())
+	assert.that(mario.esFeliz())
+	assert.equals(170, castillo.nivelDeDefensa())
+}
+
+test "Floki" {
+	
+	floki.cambiarArma(jabalina)
+	luisa.jugadorActivo(mario)
+	luisa.jugadorActivo().encontrar(tipa)
+	luisa.jugadorActivo(floki)
+	luisa.jugadorActivo().encontrar(aurora)
+	luisa.jugadorActivo().encontrar(castillo)
+	
+	assert.equals(16, mario.valorRecolectado())
+	assert.equals(9, tipa.altura())
+	assert.notThat(mario.esFeliz())
+	assert.notThat(aurora.estaViva())
+	assert.equals(150, castillo.nivelDeDefensa())
+	assert.notThat(jabalina.estaCargada())
+}
+
+test "Segundo test Floki" {
+	
+	floki.cambiarArma(ballesta)
+	luisa.jugadorActivo(floki)
+	luisa.jugadorActivo().encontrar(aurora)
+	luisa.jugadorActivo().encontrar(castillo)
+	
+	assert.equals(0, mario.valorRecolectado())
+	assert.that(aurora.estaViva())
+	assert.equals(146, castillo.nivelDeDefensa())
+	assert.that(ballesta.estaCargada() and ballesta.flechas() == 8)
 }
